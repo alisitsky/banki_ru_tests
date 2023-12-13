@@ -1,22 +1,25 @@
 package ru.banki.pages;
 
-import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import org.openqa.selenium.Keys;
-import ru.banki.ultils.RandomUtils;
+import ru.banki.ultils.Utils;
 
-import java.time.Duration;
-
-import static com.codeborne.selenide.Condition.appear;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 
 public class MainPage {
 
-    RandomUtils randomUtils = new RandomUtils();
+    Utils utils = new Utils();
 
     SelenideElement
-            widgetSearchBanksInput = $("div[data-test='widget-search-banks_input'] input[type=text]");
+            widgetSearchBanksInput = $("div[data-test='widget-search-banks_input'] input[type=text]"),
+            tabDeposits = $$("ul.main-menu__sections li").findBy(text("Вклады")),
+            headerSubmenu = $("div.main-menu__submenu");
+
+    ElementsCollection
+            headerSubmenuLinks = $$("div.main-menu__submenu-item a");
+
+
 
     public MainPage openPage() {
         open("https://banki.ru");
@@ -24,14 +27,28 @@ public class MainPage {
         return this;
     }
 
-    public MainPage scrollUntilBanksInputLoads () {
-        randomUtils.scrollAndCheckElementVisibility(widgetSearchBanksInput);
+    public MainPage scrollUntilElementVisible(SelenideElement selenideElement) {
+        utils.scrollUntilElementAppears(selenideElement);
         return this;
     }
 
-    public MainPage setValueInBankSearchInput (String text) {
-        widgetSearchBanksInput.scrollTo().click();
-        widgetSearchBanksInput.setValue(text);
+    public MainPage hoverHeaderTab(String tabName) {
+        $$("ul.main-menu__sections li").findBy(text(tabName)).hover();
         return this;
     }
+
+    public MainPage headerSubmenuIsVisible() {
+        headerSubmenu.shouldBe(visible);
+        return this;
+    }
+
+    public MainPage clickHeaderSubmenuLink(String linkText) {
+        headerSubmenuLinks.findBy(text(linkText)).click();
+        return this;
+    }
+   public MainPage aaa() {
+
+        return this;
+    }
+
 }

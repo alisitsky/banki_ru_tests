@@ -1,5 +1,8 @@
 package ru.banki.tests;
 
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
@@ -9,6 +12,8 @@ import static com.codeborne.selenide.WebDriverConditions.url;
 public class HeaderSearchTests extends TestBase {
 
     @Test
+    @Tag("regress")
+    @DisplayName("Header Search Test")
     public void headerSearchTest() {
         open("https://banki.ru");
         $("div.header-search").click();
