@@ -1,6 +1,7 @@
 package ru.banki.tests;
 
 import com.codeborne.selenide.logevents.SelenideLogger;
+import com.github.javafaker.Faker;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -8,11 +9,8 @@ import org.junit.jupiter.api.Test;
 import ru.banki.pages.MainPage;
 import ru.banki.pages.SearchResultPage;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.$$;
-import static com.codeborne.selenide.WebDriverConditions.url;
 import static io.qameta.allure.Allure.step;
 import static ru.banki.data.HeaderTestsData.*;
 import static ru.banki.ultils.AttachUtils.attachScreenshotAs;
@@ -23,6 +21,7 @@ public class HeaderTests extends TestBase {
 
     MainPage mainPage = new MainPage();
     SearchResultPage searchResultPage = new SearchResultPage();
+    Faker faker = new Faker();
 
     @Test
     @Tag("regress")
@@ -77,14 +76,28 @@ public class HeaderTests extends TestBase {
     @DisplayName("Location Change Test")
     public void LocationChangeTest() {
         SelenideLogger.addListener("allure", new AllureSelenide());
+        String randomCity = cities[faker.number().numberBetween(0, cities.length)];
 
-        String city = "Абакан"; //  todo написать метод, который берет рандомный город - вытаскивать список элементов и брать рандомный из них
+        step("Open main page", () -> {
+            mainPage.openPage();
+            attachScreenshotAs("Step screenshot");
+        });
 
-        open("https://banki.ru");
-        $$("button[type=button]").findBy(text("Другой город")).click();
-        $$("div ul li[data-selected=false]").findBy(text(city)).click();
-        sleep(2000);
-        $("span[data-geo-selector]").shouldBe(visible).click();
-        $("div.Area__sc-16fin9f-0 span").shouldHave(text(city));
+        step("Click \"Другой город\"", () -> {
+            mainPage.clickAnotherCityButton();
+            attachScreenshotAs("Step screenshot");
+        });
+
+        step("Click random city from the list", () ->
+            mainPage.clickCity(randomCity)
+        );
+
+//        sleep(2000);    //  todo убрать. видимо, не успевают прогрузиться какие-то элементы
+
+
+        step("Check new city is applied", () -> {
+            mainPage.clickGeoSelectorButton()
+                    .currentCityNameIs(randomCity);
+        });
     }
 }

@@ -2,32 +2,40 @@ package ru.banki.pages;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import com.github.javafaker.Faker;
 import ru.banki.ultils.RandomUtils;
+
+import java.time.Duration;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.WebDriverConditions.url;
 
 public class MainPage {
 
     RandomUtils randomUtils = new RandomUtils();
+    Faker faker = new Faker();
 
     SelenideElement
             widgetSearchBanksInput = $("div[data-test='widget-search-banks_input'] input[type=text]"),
             tabDeposits = $$("ul.main-menu__sections li").findBy(text("Вклады")),
+            mainPageBody = $("main.page-container__body"),
             headerSubmenu = $("div.main-menu__submenu"),
             headerSearchButton = $("div.header-search"),
             searchInput = $("input[type=search]"),
-            submitSearchButton = $("button[type=submit]");
+            submitSearchButton = $("button[type=submit]"),
+            anotherCityButton = $$("button[type=button]").findBy(text("Другой город")),
+            currentCityName = $("div[class^=Area]"),
+            geoSelectorButton = $("span[data-geo-selector]");
 
     ElementsCollection
-            headerSubmenuLinks = $$("div.main-menu__submenu-item a");
+            headerSubmenuLinks = $$("div.main-menu__submenu-item a"),
+            citiesList = $$("div ul li[data-selected=false]");
 
 
 
     public MainPage openPage() {
         open("https://banki.ru");
-        $("main.page-container__body").should(appear);
+        mainPageBody.should(appear);
         return this;
     }
 
@@ -62,6 +70,29 @@ public class MainPage {
 
     public MainPage clickSubmitSearchButton() {
         submitSearchButton.click();
+        return this;
+    }
+
+    public MainPage clickCity(String city) {
+        citiesList.findBy(text(city)).click();
+        mainPageBody.should(appear);    //
+        return this;
+    }
+
+    public MainPage clickAnotherCityButton() {
+        anotherCityButton.click();
+        return this;
+    }
+
+    public MainPage currentCityNameIs(String cityName) {
+        currentCityName.shouldHave(text(cityName));
+        return this;
+    }
+
+    public MainPage clickGeoSelectorButton() {
+        geoSelectorButton.shouldBe(visible, Duration.ofSeconds(4))
+                .shouldBe(interactable, Duration.ofSeconds(4))
+                .click();
         return this;
     }
 
