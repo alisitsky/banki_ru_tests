@@ -1,13 +1,10 @@
 package ru.banki.ultils;
 
 import com.codeborne.selenide.SelenideElement;
-import com.github.javafaker.DateAndTime;
 import com.github.javafaker.Faker;
 import org.openqa.selenium.Keys;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.concurrent.ThreadLocalRandom;
@@ -16,7 +13,7 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverConditions.url;
 
-public class Utils {
+public class RandomUtils {
     Faker faker = new Faker();
 
     public void scrollUntilElementAppears(SelenideElement selenideElement) {
@@ -38,7 +35,7 @@ public class Utils {
         );
     }
 
-    public int getRandomInt(int from, int to){
+    public static int getRandomInt(int from, int to){
         return ThreadLocalRandom.current().nextInt(from, to);
     }
 
@@ -55,7 +52,7 @@ public class Utils {
         return result;
     }
 
-    public void currentUrlEquals(String url) {
+    public static void currentUrlEquals(String url) {
         webdriver().shouldHave(url(url));
 
     }

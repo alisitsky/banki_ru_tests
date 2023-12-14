@@ -3,7 +3,7 @@ package ru.banki.tests;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
 import ru.banki.pages.MainPage;
-import ru.banki.ultils.Utils;
+import ru.banki.ultils.RandomUtils;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
@@ -11,9 +11,9 @@ import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverConditions.urlContaining;
 import static com.codeborne.selenide.WebDriverConditions.urlStartingWith;
 
-public class OnlineCalculatorTests {
+public class OnlineCalculatorTests extends TestBase{
     MainPage mainPage = new MainPage();
-    Utils utils = new Utils();
+    RandomUtils randomUtils = new RandomUtils();
 
     @Test
     public void tabsSwitchTest() {
@@ -55,7 +55,7 @@ public class OnlineCalculatorTests {
 
         // поменять срок (на рандомный из диапазона)
         $("div[data-test=credit-period] input").sendKeys(Keys.BACK_SPACE);
-        $("div[data-test=credit-period] input").setValue(String.valueOf(utils.getRandomInt(1, 99)));
+        $("div[data-test=credit-period] input").setValue(String.valueOf(randomUtils.getRandomInt(1, 99)));
 
         // проверить, что зн.кальк.изменилось
         $("div[data-test=widget-tab-credit-calc-payment]").shouldNotHave(text(calcValueBeforeChange));
@@ -65,7 +65,7 @@ public class OnlineCalculatorTests {
         $("div[class^=InputWithSelect").$$("div[class^=InputWithSelect").get(1).click();
 
         // клик в 1 или 2 значение дропдауна
-        $$("div[class^=DropdownList] li").get(utils.getRandomInt(0, 2)).click();
+        $$("div[class^=DropdownList] li").get(randomUtils.getRandomInt(0, 2)).click();
 
         // проверить, что зн.кальк.изменилось
         $("div[data-test=widget-tab-credit-calc-payment]").shouldNotHave(text(calcValueBeforeChange));
@@ -79,8 +79,8 @@ public class OnlineCalculatorTests {
         // клик в "страхование ипотеки"
         $("div[data-test=tabs-panel-tab-mortgage-insurance]").shouldBe(visible).click();
 
-        // ввести рандомную дату в последнее поле   todo: написать метод в utils, который будет вставлять рандомную дату
-        $("input[data-testid=input-mask]").shouldBe(visible).setValue(utils.getRandomBirthDateString());
+        // ввести рандомную дату в последнее поле
+        $("input[data-testid=input-mask]").shouldBe(visible).setValue(randomUtils.getRandomBirthDateString());
 
 //        // нажать на кнопку
         $("button[data-test=main-ins-tab-hypothec-calculate]").click();

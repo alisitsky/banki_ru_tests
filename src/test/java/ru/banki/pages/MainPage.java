@@ -2,19 +2,23 @@ package ru.banki.pages;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import ru.banki.ultils.Utils;
+import ru.banki.ultils.RandomUtils;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.WebDriverConditions.url;
 
 public class MainPage {
 
-    Utils utils = new Utils();
+    RandomUtils randomUtils = new RandomUtils();
 
     SelenideElement
             widgetSearchBanksInput = $("div[data-test='widget-search-banks_input'] input[type=text]"),
             tabDeposits = $$("ul.main-menu__sections li").findBy(text("Вклады")),
-            headerSubmenu = $("div.main-menu__submenu");
+            headerSubmenu = $("div.main-menu__submenu"),
+            headerSearchButton = $("div.header-search"),
+            searchInput = $("input[type=search]"),
+            submitSearchButton = $("button[type=submit]");
 
     ElementsCollection
             headerSubmenuLinks = $$("div.main-menu__submenu-item a");
@@ -28,7 +32,7 @@ public class MainPage {
     }
 
     public MainPage scrollUntilElementVisible(SelenideElement selenideElement) {
-        utils.scrollUntilElementAppears(selenideElement);
+        randomUtils.scrollUntilElementAppears(selenideElement);
         return this;
     }
 
@@ -46,7 +50,22 @@ public class MainPage {
         headerSubmenuLinks.findBy(text(linkText)).click();
         return this;
     }
-   public MainPage aaa() {
+   public MainPage clickHeaderSearchButton() {
+       headerSearchButton.click();
+       return this;
+    }
+
+    public MainPage setSearchRequest(String text) {
+        searchInput.setValue(text);
+        return this;
+    }
+
+    public MainPage clickSubmitSearchButton() {
+        submitSearchButton.click();
+        return this;
+    }
+
+    public MainPage aaa() {
 
         return this;
     }

@@ -43,13 +43,13 @@ tasks.withType(Test) {
 
     testLogging {
         lifecycle {
-            events "started", "skipped", "failed", "standard_error", "standard_out"
+            events "started", "skipped", "failed", "standard_error", "standard_out", "passed"
             exceptionFormat "short"
         }
     }
 }
 
-task regress_suite(type: Test) {    //  todo: выяснить, как запускать это командой в терминале
+task regress_suite(type: Test) {
     useJUnitPlatform{
         includeTags("regress")
     }
