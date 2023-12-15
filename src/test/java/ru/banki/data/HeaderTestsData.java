@@ -110,6 +110,4 @@ public class HeaderTestsData {
             "Якутск",
             "Ярославль"
     };
-
-
 }

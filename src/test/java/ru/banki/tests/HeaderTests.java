@@ -7,20 +7,19 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import ru.banki.pages.MainPage;
-import ru.banki.pages.SearchResultPage;
+import ru.banki.pages.SearchPage;
 
-import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.Selenide.$$;
 import static io.qameta.allure.Allure.step;
 import static ru.banki.data.HeaderTestsData.*;
 import static ru.banki.ultils.AttachUtils.attachScreenshotAs;
 import static ru.banki.ultils.RandomUtils.currentUrlEquals;
+import static ru.banki.ultils.RandomUtils.currentUrlIs;
 
 @DisplayName("Header Tests")
 public class HeaderTests extends TestBase {
 
     MainPage mainPage = new MainPage();
-    SearchResultPage searchResultPage = new SearchResultPage();
+    SearchPage searchPage = new SearchPage();
     Faker faker = new Faker();
 
     @Test
@@ -67,8 +66,8 @@ public class HeaderTests extends TestBase {
             mainPage.clickSubmitSearchButton());
 
         step("Check url and 1st search result", () -> {
-            searchResultPage.currentUrlIs(searchResultPageUrl)
-                    .firstResultHasText(searchRequest);
+            currentUrlIs(searchResultPageUrl);
+            searchPage.firstResultHasText(searchRequest);
         });
     }
 

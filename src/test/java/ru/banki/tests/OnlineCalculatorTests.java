@@ -5,23 +5,16 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.Keys;
 import ru.banki.pages.MainPage;
-import ru.banki.ultils.RandomUtils;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.WebDriverConditions.urlContaining;
-import static com.codeborne.selenide.WebDriverConditions.urlStartingWith;
 import static io.qameta.allure.Allure.step;
-import static ru.banki.data.OnlineCalculatorTestsData.calcValueBeforeChange;
 import static ru.banki.ultils.AttachUtils.attachScreenshotAs;
+import static ru.banki.ultils.RandomUtils.getRandomBirthDateString;
+import static ru.banki.ultils.RandomUtils.urlHasParam;
 
 @DisplayName("Online Calc Tests")
 public class OnlineCalculatorTests extends TestBase {
     MainPage mainPage = new MainPage();
-    RandomUtils randomUtils = new RandomUtils();
 
     @Test
     @Tag("regress")
@@ -102,8 +95,12 @@ public class OnlineCalculatorTests extends TestBase {
     }
 
     @Test
+    @Tag("regress")
+    @DisplayName("Url params for Mortgage page are correct")
     public void urlParamsTest() {
         SelenideLogger.addListener("allure", new AllureSelenide());
+        String randomBirthDate = getRandomBirthDateString();
+        String urlParamBirthDate = "birthDate=" + randomBirthDate;
 
         step("Open main page", () -> {
             mainPage.openPage();
@@ -112,20 +109,25 @@ public class OnlineCalculatorTests extends TestBase {
 
         step("Scroll to online-calc widget", () -> {
             mainPage.scrollToCalcWidget();
+            attachScreenshotAs("Step screenshot");
         });
 
-        // клик в "страхование ипотеки"
-        $("div[data-test=tabs-panel-tab-mortgage-insurance]").shouldBe(visible).click();
+        step("Click Mortgage Insurance tab", () -> {
+            mainPage.switchToCalcTab();
+            attachScreenshotAs("Step screenshot");
+        });
 
-        // ввести рандомную дату в последнее поле
-        $("input[data-testid=input-mask]").shouldBe(visible).setValue(randomUtils.getRandomBirthDateString());
+        step("Set random birth date", () -> {
+            mainPage.setBirthDate(randomBirthDate);
+            attachScreenshotAs("Step screenshot");
+        });
 
-//        // нажать на кнопку
-        $("button[data-test=main-ins-tab-hypothec-calculate]").click();
+        step("Click Submit button", () -> {
+            mainPage.clickSubmitCalcButton();
+        });
 
-        // Проверить урл
-        webdriver().shouldHave(urlStartingWith("https://www.banki.ru/insurance/order/realty/mortgage/result"))
-                .shouldHave(urlContaining("amount=3000000"));
+        step("Check url has parameter", () ->
+            urlHasParam(urlParamBirthDate));
 
     }
 }

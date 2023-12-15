@@ -4,7 +4,6 @@ import com.codeborne.selenide.Selenide;
 import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
@@ -16,7 +15,6 @@ import static org.openqa.selenium.logging.LogType.BROWSER;
 public class AttachUtils {
 
     static String remoteBrowserUrl = System.getProperty("remoteBrowserUrl", "selenoid.autotests.cloud");
-
 
     @Attachment(value = "{attachName}", type = "image/png")
     public static byte[] attachScreenshotAs(String attachName) {
@@ -36,8 +34,7 @@ public class AttachUtils {
     public static void attachBrowserConsoleLogs() {
         attachAsText(
                 "Browser console logs",
-                String.join("\n", Selenide.getWebDriverLogs(BROWSER))
-        );
+                String.join("\n", Selenide.getWebDriverLogs(BROWSER)));
     }
 
     @Attachment(value = "Video", type = "text/html", fileExtension = ".html")

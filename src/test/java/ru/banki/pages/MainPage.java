@@ -2,7 +2,6 @@ package ru.banki.pages;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import com.github.javafaker.Faker;
 import org.openqa.selenium.Keys;
 import ru.banki.ultils.RandomUtils;
 
@@ -10,12 +9,11 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static ru.banki.ultils.RandomUtils.clickUntilVisible;
 import static ru.banki.data.OnlineCalculatorTestsData.calcValueBeforeChange;
-
+import static ru.banki.ultils.RandomUtils.getRandomInt;
 
 public class MainPage {
 
     RandomUtils randomUtils = new RandomUtils();
-    Faker faker = new Faker();
 
     SelenideElement
             mainPageBody = $("main.page-container__body"),
@@ -33,14 +31,15 @@ public class MainPage {
             creditSumSlider = $("div[data-role=ranger]"),
             creditCalculatedValue = $("div[data-test=widget-tab-credit-calc-payment]"),
             creditPeriodInput = $("div[data-test=credit-period] input"),
-            creditTimeSelectButton = $("div[class^=InputWithSelect").$$("div[class^=InputWithSelect").get(1);
+            creditTimeSelectButton = $("div[class^=InputWithSelect").$$("div[class^=InputWithSelect").get(1),
+            calcMortgageInsuranceTab = $("div[data-test=tabs-panel-tab-mortgage-insurance]"),
+            calcBirthDateInput = $("input[data-testid=input-mask]"),
+            calcSubmitButton = $("button[data-test=main-ins-tab-hypothec-calculate]");
 
     ElementsCollection
             headerSubmenuLinks = $$("div.main-menu__submenu-item a"),
             citiesList = $$("div ul li[data-selected=false]"),
             creditTimeSelectOptions = $$("div[class^=DropdownList] li");
-
-
 
     public MainPage openPage() {
         open("https://banki.ru");
@@ -138,20 +137,28 @@ public class MainPage {
 
     public MainPage setRandomTimeValue() {
         creditPeriodInput.sendKeys(Keys.BACK_SPACE);
-        creditPeriodInput.setValue(String.valueOf(randomUtils.getRandomInt(1, 99)));
+        creditPeriodInput.setValue(String.valueOf(getRandomInt(1, 99)));
         return this;
     }
 
     public MainPage setRandomTimeMeasurement() {
         creditTimeSelectButton.click();
-        creditTimeSelectOptions.get(randomUtils.getRandomInt(0, 2)).click();
+        creditTimeSelectOptions.get(getRandomInt(0, 2)).click();
         return this;
     }
 
-    public MainPage aaaaa() {
-
+    public MainPage switchToCalcTab() {
+        calcMortgageInsuranceTab.shouldBe(visible).click();
         return this;
     }
 
+    public MainPage setBirthDate(String date) {
+        calcBirthDateInput.shouldBe(visible).setValue(date);
+        return this;
+    }
 
+    public MainPage clickSubmitCalcButton() {
+        calcSubmitButton.click();
+        return this;
+    }
 }
