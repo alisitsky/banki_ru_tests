@@ -3,11 +3,14 @@ package ru.banki.pages;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import com.github.javafaker.Faker;
+import org.openqa.selenium.Keys;
 import ru.banki.ultils.RandomUtils;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static ru.banki.ultils.RandomUtils.clickUntilVisible;
+import static ru.banki.data.OnlineCalculatorTestsData.calcValueBeforeChange;
+
 
 public class MainPage {
 
@@ -15,8 +18,6 @@ public class MainPage {
     Faker faker = new Faker();
 
     SelenideElement
-            widgetSearchBanksInput = $("div[data-test='widget-search-banks_input'] input[type=text]"),
-            tabDeposits = $$("ul.main-menu__sections li").findBy(text("Вклады")),
             mainPageBody = $("main.page-container__body"),
             headerSubmenu = $("div.main-menu__submenu"),
             headerSearchButton = $("div.header-search"),
@@ -24,22 +25,26 @@ public class MainPage {
             submitSearchButton = $("button[type=submit]"),
             anotherCityButton = $$("button[type=button]").findBy(text("Другой город")),
             currentLocationPopup = $("div[class^=Area]"),
-            geoSelectorButton = $("span[data-geo-selector]");
+            geoSelectorButton = $("span[data-geo-selector]"),
+            calcTabsPannel = $("div[data-test=tabs-panel]"),
+            calcDepositsTab = $("div[data-test=tabs-panel-tab-deposits]"),
+            calcCreditsTabContent = $("div[data-test=credits-home-page-widget]"),
+            calcDepositsTabContent = $("div[data-test=deposits-home-page-widget]"),
+            creditSumSlider = $("div[data-role=ranger]"),
+            creditCalculatedValue = $("div[data-test=widget-tab-credit-calc-payment]"),
+            creditPeriodInput = $("div[data-test=credit-period] input"),
+            creditTimeSelectButton = $("div[class^=InputWithSelect").$$("div[class^=InputWithSelect").get(1);
 
     ElementsCollection
             headerSubmenuLinks = $$("div.main-menu__submenu-item a"),
-            citiesList = $$("div ul li[data-selected=false]");
+            citiesList = $$("div ul li[data-selected=false]"),
+            creditTimeSelectOptions = $$("div[class^=DropdownList] li");
 
 
 
     public MainPage openPage() {
         open("https://banki.ru");
         mainPageBody.should(appear);
-        return this;
-    }
-
-    public MainPage scrollUntilElementVisible(SelenideElement selenideElement) {
-        randomUtils.scrollUntilElementAppears(selenideElement);
         return this;
     }
 
@@ -57,11 +62,11 @@ public class MainPage {
         headerSubmenuLinks.findBy(text(linkText)).click();
         return this;
     }
-   public MainPage clickHeaderSearchButton() {
+
+    public MainPage clickHeaderSearchButton() {
        headerSearchButton.click();
        return this;
     }
-
     public MainPage setSearchRequest(String text) {
         searchInput.setValue(text);
         return this;
@@ -93,9 +98,60 @@ public class MainPage {
         return this;
     }
 
-    public MainPage aaa() {
+    public MainPage scrollToCalcWidget() {
+        randomUtils.scrollUntilElementAppears(calcTabsPannel);
+        return this;
+    }
+
+    public MainPage checkTabsVisibilityBeforeSwitch() {
+        calcCreditsTabContent.shouldBe(visible);
+        calcDepositsTabContent.shouldNotBe(visible);
+        return this;
+    }
+
+    public MainPage switchCalcTab() {
+        calcDepositsTab.click();
+        return this;
+    }
+
+    public MainPage checkTabsVisibilityAfterSwitch() {
+        calcDepositsTabContent.shouldBe(visible);
+        calcCreditsTabContent.shouldNotBe(visible);
+        return this;
+    }
+
+    public MainPage saveCalculatedValue() {
+        calcValueBeforeChange = $("div[data-test=widget-tab-credit-calc-payment]").text();
+        return this;
+    }
+
+    public MainPage clickSliderCenter() {
+        creditSumSlider.click();
+        return this;
+    }
+
+    public MainPage calcValueIsChanged() {
+        creditCalculatedValue.shouldNotHave(text(calcValueBeforeChange));
 
         return this;
     }
+
+    public MainPage setRandomTimeValue() {
+        creditPeriodInput.sendKeys(Keys.BACK_SPACE);
+        creditPeriodInput.setValue(String.valueOf(randomUtils.getRandomInt(1, 99)));
+        return this;
+    }
+
+    public MainPage setRandomTimeMeasurement() {
+        creditTimeSelectButton.click();
+        creditTimeSelectOptions.get(randomUtils.getRandomInt(0, 2)).click();
+        return this;
+    }
+
+    public MainPage aaaaa() {
+
+        return this;
+    }
+
 
 }
