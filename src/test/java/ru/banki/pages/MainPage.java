@@ -5,10 +5,9 @@ import com.codeborne.selenide.SelenideElement;
 import com.github.javafaker.Faker;
 import ru.banki.ultils.RandomUtils;
 
-import java.time.Duration;
-
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
+import static ru.banki.ultils.RandomUtils.clickUntilVisible;
 
 public class MainPage {
 
@@ -24,7 +23,7 @@ public class MainPage {
             searchInput = $("input[type=search]"),
             submitSearchButton = $("button[type=submit]"),
             anotherCityButton = $$("button[type=button]").findBy(text("Другой город")),
-            currentCityName = $("div[class^=Area]"),
+            currentLocationPopup = $("div[class^=Area]"),
             geoSelectorButton = $("span[data-geo-selector]");
 
     ElementsCollection
@@ -84,15 +83,13 @@ public class MainPage {
         return this;
     }
 
-    public MainPage currentCityNameIs(String cityName) {
-        currentCityName.shouldHave(text(cityName));
+    public MainPage clickGeoSelectorButton() {
+        clickUntilVisible(geoSelectorButton, currentLocationPopup, 4);
         return this;
     }
 
-    public MainPage clickGeoSelectorButton() {
-        geoSelectorButton.shouldBe(visible, Duration.ofSeconds(4))
-                .shouldBe(interactable, Duration.ofSeconds(4))
-                .click();
+    public MainPage currentCityNameIs(String cityName) {
+        currentLocationPopup.shouldHave(text(cityName));
         return this;
     }
 

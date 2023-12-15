@@ -30,19 +30,19 @@ public class HeaderTests extends TestBase {
         SelenideLogger.addListener("allure", new AllureSelenide());
 
         step("Open main page", () -> {
-                mainPage.openPage();
-                attachScreenshotAs("Step screenshot");
+            mainPage.openPage();
+            attachScreenshotAs("Step screenshot");
         });
 
         step("Header's submenu appears by hover", () -> {
-                mainPage.hoverHeaderTab(headerTabDeposits)
-                        .headerSubmenuIsVisible();
-                attachScreenshotAs("Step screenshot");
+            mainPage.hoverHeaderTab(headerTabDeposits)
+                    .headerSubmenuIsVisible();
+            attachScreenshotAs("Step screenshot");
         });
 
         step("Click in \"" + headerLinkSpecials + "\" link and check URL", () -> {
-                mainPage.clickHeaderSubmenuLink(headerLinkSpecials);
-                currentUrlEquals(specialsPageUrl);
+            mainPage.clickHeaderSubmenuLink(headerLinkSpecials);
+            currentUrlEquals(specialsPageUrl);
         });
     }
 
@@ -53,21 +53,22 @@ public class HeaderTests extends TestBase {
         SelenideLogger.addListener("allure", new AllureSelenide());
 
         step("Open main page", () -> {
-                mainPage.openPage();
-                attachScreenshotAs("Step screenshot");
+            mainPage.openPage();
+            attachScreenshotAs("Step screenshot");
         });
 
         step("Click search-button and set value", () -> {
-                mainPage.clickHeaderSearchButton()
-                        .setSearchRequest(searchRequest);
+            mainPage.clickHeaderSearchButton()
+                    .setSearchRequest(searchRequest);
+            attachScreenshotAs("Step screenshot");
         });
 
         step("Click submit button", () ->
-                mainPage.clickSubmitSearchButton());
+            mainPage.clickSubmitSearchButton());
 
         step("Check url and 1st search result", () -> {
-                searchResultPage.currentUrlIs(searchResultPageUrl)
-                        .firstResultHasText(searchRequest);
+            searchResultPage.currentUrlIs(searchResultPageUrl)
+                    .firstResultHasText(searchRequest);
         });
     }
 
@@ -91,9 +92,6 @@ public class HeaderTests extends TestBase {
         step("Click random city from the list", () ->
             mainPage.clickCity(randomCity)
         );
-
-//        sleep(2000);    //  todo убрать. видимо, не успевают прогрузиться какие-то элементы
-
 
         step("Check new city is applied", () -> {
             mainPage.clickGeoSelectorButton()

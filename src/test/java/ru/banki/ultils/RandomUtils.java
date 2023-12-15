@@ -54,6 +54,14 @@ public class RandomUtils {
 
     public static void currentUrlEquals(String url) {
         webdriver().shouldHave(url(url));
+    }
 
+    public static void clickUntilVisible(SelenideElement elementToClick, SelenideElement elementToCheck, int secRepeat) {
+        int i = secRepeat * 10;
+        while (!elementToCheck.is(visible) && i > 0) {
+            sleep(100);
+            elementToClick.click();
+            i--;
+        }
     }
 }
