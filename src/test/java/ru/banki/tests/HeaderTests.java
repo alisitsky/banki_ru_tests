@@ -83,7 +83,7 @@ public class HeaderTests extends TestBase {
             attachScreenshotAs("Step screenshot");
         });
 
-        step("Click \"Другой город\"", () -> {
+        step("Click \"Другой город\" button" , () -> {
             mainPage.clickAnotherCityButton();
             attachScreenshotAs("Step screenshot");
         });

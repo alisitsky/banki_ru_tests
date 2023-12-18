@@ -1,5 +1,5 @@
 package ru.banki.data;
 
 public class OnlineCalculatorTestsData {
-    public static String calcValueBeforeChange = null;
+    public static String calcValueBeforeChange;
 }

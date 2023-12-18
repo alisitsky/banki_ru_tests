@@ -14,7 +14,7 @@ import static com.codeborne.selenide.WebDriverConditions.url;
 import static com.codeborne.selenide.WebDriverConditions.urlContaining;
 
 public class RandomUtils {
-    public void scrollUntilElementAppears(SelenideElement selenideElement) {
+    public void scrollUntilElementLoads(SelenideElement selenideElement) {
         while (!selenideElement.is(visible)) {
             if (canScrollDown()) {
                 $("body").sendKeys(Keys.PAGE_DOWN);
@@ -54,7 +54,7 @@ public class RandomUtils {
         webdriver().shouldHave(url(url));
     }
 
-    public static void clickUntilVisible(SelenideElement elementToClick, SelenideElement elementToCheck, int secRepeat) {
+    public static void clickUntilAppears(SelenideElement elementToClick, SelenideElement elementToCheck, int secRepeat) {
         int i = secRepeat * 10;
         while (!elementToCheck.is(visible) && i > 0) {
             sleep(100);

@@ -65,9 +65,8 @@ public class OnlineCalculatorTests extends TestBase {
             mainPage.saveCalculatedValue();
         });
 
-        step("Click the slider", () -> {
-            mainPage.clickSliderCenter();
-        });
+        step("Click the slider", () ->
+            mainPage.clickSliderCenter());
 
         step("Check value is changed", () -> {
             mainPage.calcValueIsChanged()
@@ -75,9 +74,8 @@ public class OnlineCalculatorTests extends TestBase {
             attachScreenshotAs("Step screenshot");
         });
 
-        step("Set random time period", () -> {
-            mainPage.setRandomTimeValue();
-        });
+        step("Set random time period", () ->
+            mainPage.setRandomTimeValue());
 
         step("Check value is changed", () -> {
             mainPage.calcValueIsChanged()
@@ -85,13 +83,11 @@ public class OnlineCalculatorTests extends TestBase {
             attachScreenshotAs("Step screenshot");
         });
 
-        step("Set random unit of measurement", () -> {
-            mainPage.setRandomTimeMeasurement();
-        });
+        step("Set random unit of measurement", () ->
+            mainPage.setRandomTimeMeasurement());
 
-        step("Check value is changed", () -> {
-            mainPage.calcValueIsChanged();
-        });
+        step("Check value is changed", () ->
+            mainPage.calcValueIsChanged());
     }
 
     @Test
@@ -122,12 +118,10 @@ public class OnlineCalculatorTests extends TestBase {
             attachScreenshotAs("Step screenshot");
         });
 
-        step("Click Submit button", () -> {
-            mainPage.clickSubmitCalcButton();
-        });
+        step("Click Submit button", () ->
+            mainPage.clickSubmitCalcButton());
 
         step("Check url has parameter", () ->
             urlHasParam(urlParamBirthDate));
-
     }
 }

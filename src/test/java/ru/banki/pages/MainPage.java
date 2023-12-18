@@ -7,7 +7,7 @@ import ru.banki.ultils.RandomUtils;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
-import static ru.banki.ultils.RandomUtils.clickUntilVisible;
+import static ru.banki.ultils.RandomUtils.clickUntilAppears;
 import static ru.banki.data.OnlineCalculatorTestsData.calcValueBeforeChange;
 import static ru.banki.ultils.RandomUtils.getRandomInt;
 
@@ -88,7 +88,7 @@ public class MainPage {
     }
 
     public MainPage clickGeoSelectorButton() {
-        clickUntilVisible(geoSelectorButton, currentLocationPopup, 4);
+        clickUntilAppears(geoSelectorButton, currentLocationPopup, 4);
         return this;
     }
 
@@ -98,7 +98,7 @@ public class MainPage {
     }
 
     public MainPage scrollToCalcWidget() {
-        randomUtils.scrollUntilElementAppears(calcTabsPannel);
+        randomUtils.scrollUntilElementLoads(calcTabsPannel);
         return this;
     }
 
