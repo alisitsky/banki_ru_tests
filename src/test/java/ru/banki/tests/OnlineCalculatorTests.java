@@ -20,7 +20,6 @@ public class OnlineCalculatorTests extends TestBase {
     @Tag("regress")
     @DisplayName("Switch tab and check its visibility")
     public void tabsSwitchTest() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
 
         step("Open main page", () -> {
             mainPage.openPage();
@@ -49,7 +48,6 @@ public class OnlineCalculatorTests extends TestBase {
     @Tag("regress")
     @DisplayName("Calculated value changes when input changes")
     public void calcChangesValueTest() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
 
         step("Open main page", () -> {
             mainPage.openPage();
@@ -94,7 +92,6 @@ public class OnlineCalculatorTests extends TestBase {
     @Tag("regress")
     @DisplayName("Url params for Mortgage page are correct")
     public void urlParamsTest() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
         String randomBirthDate = getRandomBirthDateString();
         String urlParamBirthDate = "birthDate=" + randomBirthDate;
 

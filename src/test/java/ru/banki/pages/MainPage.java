@@ -6,6 +6,7 @@ import org.openqa.selenium.Keys;
 import ru.banki.ultils.RandomUtils;
 
 import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Configuration.baseUrl;
 import static com.codeborne.selenide.Selenide.*;
 import static ru.banki.ultils.RandomUtils.clickUntilAppears;
 import static ru.banki.data.OnlineCalculatorTestsData.calcValueBeforeChange;
@@ -42,7 +43,7 @@ public class MainPage {
             creditTimeSelectOptions = $$("div[class^=DropdownList] li");
 
     public MainPage openPage() {
-        open("https://banki.ru");
+        open(baseUrl);
         mainPageBody.should(appear);
         return this;
     }

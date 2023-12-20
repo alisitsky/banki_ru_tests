@@ -26,7 +26,6 @@ public class HeaderTests extends TestBase {
     @Tag("regress")
     @DisplayName("Hover a tab and click a link")
     public void headerNavigationTest() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
 
         step("Open main page", () -> {
             mainPage.openPage();
@@ -49,7 +48,6 @@ public class HeaderTests extends TestBase {
     @Tag("regress")
     @DisplayName("Header Search Test")
     public void headerSearchTest() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
 
         step("Open main page", () -> {
             mainPage.openPage();
@@ -75,7 +73,6 @@ public class HeaderTests extends TestBase {
     @Tag("regress")
     @DisplayName("Location Change Test")
     public void LocationChangeTest() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
         String randomCity = cities[faker.number().numberBetween(0, cities.length)];
 
         step("Open main page", () -> {
