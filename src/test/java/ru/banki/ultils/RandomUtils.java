@@ -63,8 +63,8 @@ public class RandomUtils {
         }
     }
 
-    public static void urlHasParam(String url) {
-        webdriver().shouldHave(urlContaining("birthDate=" + url));
+    public static void urlHasParam(String param) {
+        webdriver().shouldHave(urlContaining(param));
     }
 
     public static void currentUrlIs(String url) {
