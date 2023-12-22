@@ -18,7 +18,6 @@ public class OnlineCalculatorTests extends TestBase {
     @Tag("regress")
     @DisplayName("Switch tab and check its visibility")
     public void tabsSwitchTest() {
-
         step("Open main page", () -> {
             mainPage.openPage();
             attachScreenshotAs("Step screenshot");
@@ -46,7 +45,6 @@ public class OnlineCalculatorTests extends TestBase {
     @Tag("regress")
     @DisplayName("Calculated value changes when input changes")
     public void calcChangesValueTest() {
-
         step("Open main page", () -> {
             mainPage.openPage();
             attachScreenshotAs("Step screenshot");

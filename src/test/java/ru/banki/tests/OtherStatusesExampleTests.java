@@ -21,7 +21,6 @@ public class OtherStatusesExampleTests extends TestBase {
     @Tag("regress")
     @DisplayName("Hover a tab and click a link [FAILED EXAMPLE]")
     public void failedTest() {
-
         step("Open main page", () -> {
             mainPage.openPage();
             attachScreenshotAs("Step screenshot");

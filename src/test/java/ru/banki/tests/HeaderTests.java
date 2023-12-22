@@ -24,7 +24,6 @@ public class HeaderTests extends TestBase {
     @Tag("regress")
     @DisplayName("Hover a tab and click a link")
     public void headerNavigationTest() {
-
         step("Open main page", () -> {
             mainPage.openPage();
             attachScreenshotAs("Step screenshot");
@@ -46,7 +45,6 @@ public class HeaderTests extends TestBase {
     @Tag("regress")
     @DisplayName("Header Search Test")
     public void headerSearchTest() {
-
         step("Open main page", () -> {
             mainPage.openPage();
             attachScreenshotAs("Step screenshot");

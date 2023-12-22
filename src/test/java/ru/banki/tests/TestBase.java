@@ -7,7 +7,6 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.remote.DesiredCapabilities;
-
 import java.util.Map;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
@@ -17,12 +16,10 @@ public class TestBase {
 
     @BeforeAll
     static void beforeAll() {
-//        Configuration.remote = "https://"
-//                + System.getProperty("remoteBrowserUrl", "selenoid.autotests.cloud")
-//                + "/wd/hub";
-
+        Configuration.remote = "https://"
+                + System.getProperty("remoteBrowserUrl", "selenoid.autotests.cloud")
+                + "/wd/hub";
         Configuration.baseUrl = System.getProperty("baseUrl", "https://banki.ru");
-
         Configuration.browser = System.getProperty("browser", "chrome");
         Configuration.browserVersion = System.getProperty("browserVersion");
         Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
@@ -40,7 +37,6 @@ public class TestBase {
     void beforeEach() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
     }
-
 
     @AfterEach
     void attachments() {
