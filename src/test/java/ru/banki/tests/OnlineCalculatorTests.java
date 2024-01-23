@@ -1,7 +1,6 @@
 package ru.banki.tests;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import ru.banki.pages.MainPage;
 
@@ -15,7 +14,6 @@ public class OnlineCalculatorTests extends TestBase {
     MainPage mainPage = new MainPage();
 
     @Test
-    @Tag("regress")
     @DisplayName("Switch tab and check its visibility")
     public void tabsSwitchTest() {
         step("Open main page", () -> {
@@ -42,7 +40,6 @@ public class OnlineCalculatorTests extends TestBase {
     }
 
     @Test
-    @Tag("regress")
     @DisplayName("Calculated value changes when input changes")
     public void calcChangesValueTest() {
         step("Open main page", () -> {
@@ -85,7 +82,6 @@ public class OnlineCalculatorTests extends TestBase {
     }
 
     @Test
-    @Tag("regress")
     @DisplayName("Url params for Mortgage page are correct")
     public void urlParamsTest() {
         String randomBirthDate = getRandomBirthDateString();

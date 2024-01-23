@@ -21,7 +21,7 @@ public class HeaderTests extends TestBase {
     Faker faker = new Faker();
 
     @Test
-    @Tag("regress")
+    @Tag("header_test")
     @DisplayName("Hover a tab and click a link")
     public void headerNavigationTest() {
         step("Open main page", () -> {
@@ -42,7 +42,7 @@ public class HeaderTests extends TestBase {
     }
 
     @Test
-    @Tag("regress")
+    @Tag("header_test")
     @DisplayName("Header Search Test")
     public void headerSearchTest() {
         step("Open main page", () -> {
@@ -66,7 +66,7 @@ public class HeaderTests extends TestBase {
     }
 
     @Test
-    @Tag("regress")
+    @Tag("header_test")
     @DisplayName("Location Change Test")
     public void LocationChangeTest() {
         String randomCity = cities[faker.number().numberBetween(0, cities.length)];

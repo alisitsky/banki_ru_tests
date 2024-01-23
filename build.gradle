@@ -51,6 +51,6 @@ tasks.withType(Test) {
 
 task regress_suite(type: Test) {
     useJUnitPlatform{
-        includeTags("regress")
+        includeTags("header_test")
     }
 }
