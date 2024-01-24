@@ -34,7 +34,7 @@ public class MainPage {
             creditPeriodInput = $("div[data-test=credit-period] input"),
             creditTimeSelectButton = $("div[class^=InputWithSelect").$$("div[class^=InputWithSelect").get(1),
             calcMortgageInsuranceTab = $("div[data-test=tabs-panel-tab-mortgage-insurance]"),
-            calcBirthDateInput = $("input[data-testid=input-mask]"),
+            calcBirthDateInput = $("div[data-test=mortgage-insurance-home-page-widget] input[data-testid=input-mask]"),
             calcSubmitButton = $("button[data-test=main-ins-tab-hypothec-calculate]");
 
     ElementsCollection
@@ -150,6 +150,7 @@ public class MainPage {
 
     public MainPage switchToCalcTab() {
         calcMortgageInsuranceTab.shouldBe(visible).click();
+        sleep(500);
         return this;
     }
 

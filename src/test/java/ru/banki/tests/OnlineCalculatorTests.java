@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import ru.banki.pages.MainPage;
 
 import static io.qameta.allure.Allure.step;
-import static ru.banki.ultils.AttachUtils.attachScreenshotAs;
 import static ru.banki.ultils.RandomUtils.getRandomBirthDateString;
 import static ru.banki.ultils.RandomUtils.urlHasParam;
 
@@ -76,8 +75,8 @@ public class OnlineCalculatorTests extends TestBase {
     }
 
     @Test
-    @DisplayName("Url params for Mortgage page are correct")
-    public void urlParamsTest() {
+    @DisplayName("Generated url has parameter from calc input")
+    public void urlHasParamFromInputTest() {
         String randomBirthDate = getRandomBirthDateString();
         String urlParamBirthDate = "birthDate=" + randomBirthDate;
 
