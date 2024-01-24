@@ -26,13 +26,11 @@ public class HeaderTests extends TestBase {
     public void headerNavigationTest() {
         step("Open main page", () -> {
             mainPage.openPage();
-            attachScreenshotAs("Step screenshot");
         });
 
         step("Header's submenu appears by hover", () -> {
             mainPage.hoverHeaderTab(headerTabDeposits)
                     .headerSubmenuIsVisible();
-            attachScreenshotAs("Step screenshot");
         });
 
         step("Click in \"" + headerLinkSpecials + "\" link and check URL", () -> {
@@ -47,17 +45,15 @@ public class HeaderTests extends TestBase {
     public void headerSearchTest() {
         step("Open main page", () -> {
             mainPage.openPage();
-            attachScreenshotAs("Step screenshot");
         });
 
         step("Click search-button and set value", () -> {
             mainPage.clickHeaderSearchButton()
                     .setSearchRequest(searchRequest);
-            attachScreenshotAs("Step screenshot");
         });
 
         step("Click submit button", () ->
-            mainPage.clickSubmitSearchButton());
+                mainPage.clickSubmitSearchButton());
 
         step("Check url and 1st search result", () -> {
             currentUrlIs(searchResultPageUrl);
@@ -73,16 +69,14 @@ public class HeaderTests extends TestBase {
 
         step("Open main page", () -> {
             mainPage.openPage();
-            attachScreenshotAs("Step screenshot");
         });
 
-        step("Click \"Другой город\" button" , () -> {
+        step("Click \"Другой город\" button", () -> {
             mainPage.clickAnotherCityButton();
-            attachScreenshotAs("Step screenshot");
         });
 
         step("Click random city from the list", () ->
-            mainPage.clickCity(randomCity)
+                mainPage.clickCity(randomCity)
         );
 
         step("Check new city is applied", () -> {

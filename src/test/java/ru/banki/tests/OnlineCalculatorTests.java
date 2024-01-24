@@ -18,7 +18,6 @@ public class OnlineCalculatorTests extends TestBase {
     public void tabsSwitchTest() {
         step("Open main page", () -> {
             mainPage.openPage();
-            attachScreenshotAs("Step screenshot");
         });
 
         step("Scroll to online-calc widget", () -> {
@@ -27,7 +26,6 @@ public class OnlineCalculatorTests extends TestBase {
 
         step("First tab is visible, \nsecond is not", () -> {
             mainPage.checkTabsVisibilityBeforeSwitch();
-            attachScreenshotAs("Step screenshot");
         });
 
         step("Click second tab", () -> {
@@ -44,12 +42,10 @@ public class OnlineCalculatorTests extends TestBase {
     public void calcChangesValueTest() {
         step("Open main page", () -> {
             mainPage.openPage();
-            attachScreenshotAs("Step screenshot");
         });
 
         step("Scroll to online-calc widget", () -> {
             mainPage.scrollToCalcWidget();
-            attachScreenshotAs("Step screenshot");
         });
 
         step("Save calculated value", () -> {
@@ -57,28 +53,26 @@ public class OnlineCalculatorTests extends TestBase {
         });
 
         step("Click the slider", () ->
-            mainPage.clickSliderCenter());
+                mainPage.clickSliderCenter());
 
         step("Check value is changed", () -> {
             mainPage.calcValueIsChanged()
                     .saveCalculatedValue();
-            attachScreenshotAs("Step screenshot");
         });
 
         step("Set random time period", () ->
-            mainPage.setRandomTimeValue());
+                mainPage.setRandomTimeValue());
 
         step("Check value is changed", () -> {
             mainPage.calcValueIsChanged()
                     .saveCalculatedValue();
-            attachScreenshotAs("Step screenshot");
         });
 
         step("Set random unit of measurement", () ->
-            mainPage.setRandomTimeMeasurement());
+                mainPage.setRandomTimeMeasurement());
 
         step("Check value is changed", () ->
-            mainPage.calcValueIsChanged());
+                mainPage.calcValueIsChanged());
     }
 
     @Test
@@ -89,29 +83,25 @@ public class OnlineCalculatorTests extends TestBase {
 
         step("Open main page", () -> {
             mainPage.openPage();
-            attachScreenshotAs("Step screenshot");
         });
 
         step("Scroll to online-calc widget", () -> {
             mainPage.scrollToCalcWidget();
-            attachScreenshotAs("Step screenshot");
         });
 
         step("Click Mortgage Insurance tab", () -> {
             mainPage.switchToCalcTab();
-            attachScreenshotAs("Step screenshot");
         });
 
         step("Set random birth date", () -> {
             mainPage.setBirthDate(randomBirthDate);
-            attachScreenshotAs("Step screenshot");
         });
 
         step("Click Submit button", () ->
-            mainPage.clickSubmitCalcButton());
+                mainPage.clickSubmitCalcButton());
 
         step("Check url has parameter", () ->
-            urlHasParam(urlParamBirthDate));
+                urlHasParam(urlParamBirthDate));
     }
 }
 

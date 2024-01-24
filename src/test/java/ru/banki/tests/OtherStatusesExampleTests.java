@@ -23,13 +23,11 @@ public class OtherStatusesExampleTests extends TestBase {
     public void failedTest() {
         step("Open main page", () -> {
             mainPage.openPage();
-            attachScreenshotAs("Step screenshot");
         });
 
         step("Header's submenu appears by hover", () -> {
             mainPage.hoverHeaderTab(headerTabDeposits)
                     .headerSubmenuIsVisible();
-            attachScreenshotAs("Step screenshot");
         });
 
         step("Click in \"" + headerLinkSpecials + "\" link and check URL", () -> {
@@ -46,7 +44,6 @@ public class OtherStatusesExampleTests extends TestBase {
     public void skippedTest() {
         step("Open main page", () -> {
             mainPage.openPage();
-            attachScreenshotAs("Step screenshot");
         });
     }
 
@@ -54,11 +51,11 @@ public class OtherStatusesExampleTests extends TestBase {
     @Tag("regress")
     @Tag("broken")
     @DisplayName("Exception has been thrown [BROKEN EXAMPLE]")
-    @AllureId("12345")      //  todo: add ticket from jira when integrated, and maybe link to allure test ops
+    @AllureId("12345")
+        //  todo: add ticket from jira when integrated, and maybe link to allure test ops
     void brokenTest() {
         step("Open main page", () -> {
             mainPage.openPage();
-            attachScreenshotAs("Step screenshot");
         });
         throw new RuntimeException("This test is intentionally broken");
     }
