@@ -121,6 +121,7 @@ gradle clean header_tests
 ```
 
 ____
+
 <a id="jenkins"></a>
 ## <img width="3%" style="vertical-align:bottom" title="Jenkins" src="media/icons/jenkins.svg"> </a> Jenkins Build <a target="_blank"> </a>
 
@@ -133,7 +134,7 @@ Click to open HTML report and check this launch in TMS, respectively.
 
 
 <p align="center">
-<img width="90%" title="Build with parameters" src="media/screenshots/jenkins_build_params.JPG">
+<img width="70%" title="Build with parameters" src="media/screenshots/jenkins_build_params.JPG">
 </p>
 
 
@@ -144,11 +145,11 @@ ____
 Allure Report is used to create detailed customizable reports with autotests run results and provide additional info (screenshots, videos, logs) to make debugging easier.
 
 <p align="center">
-<img title="Allure Overview" src="media/screenshots/Allure.JPG">
+<img width="70%" title="Allure Overview" src="media/screenshots/Allure.JPG">
 </p>
 
 <p align="center">
-<img title="Allure Overview" src="media/screenshots/Allure2.JPG">
+<img width="70%" title="Allure Overview" src="media/screenshots/Allure2.JPG">
 </p>
 
 ____
@@ -158,11 +159,11 @@ ____
 Allure TestOps is a TMS for test cases organizing. It helps to plan and manage both manual and automated test runs, track the progress of testing, integrate with tools like JIRA, Jenkins, etc., and provides comprehensive reports on the software quality.
 
 <p align="center">
-<img title="Allure TestOps DashBoard" src="media/screenshots/testops.JPG">
+<img width="70%" title="Allure TestOps DashBoard" src="media/screenshots/testops.JPG">
 </p>
 
 <p align="center">
-<img title="Allure TestOps Test cases" src="media/screenshots/testops2.JPG">
+<img width="70%" title="Allure TestOps Test cases" src="media/screenshots/testops2.JPG">
 </p>
 ____
 
@@ -172,13 +173,13 @@ ____
 Integration of **Allure TestOps** and **Jira** is implemented. In the Jira task you can link test-cases or launches for the test-managmane purposes. 
 
 <p align="center">
-<img title="Jira Task" src="media/screenshots/jira.JPG">
+<img width="70%" title="Jira Task" src="media/screenshots/jira.JPG">
 </p>
 
 ____
 
 <a id="telegram"></a>
-## <img style="width: 50px;" title="Slack" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/slack/slack-original.svg"> Slack and <img width="4%" style="vertical-align:bottom" title="Telegram" src="media/icons/Telegram.svg"> Telegram notifications
+## <img style="width: 30px;" title="Slack" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/slack/slack-original.svg"> Slack and <img width="4%" style="vertical-align:bottom" title="Telegram" src="media/icons/Telegram.svg"> Telegram notifications
 
 
 <p align="left">
