@@ -40,7 +40,7 @@ public class OtherStatusesExampleTests extends TestBase {
     @Tag("regress")
     @Tag("skipped")
     @DisplayName("Hover a tab and click a link [SKIPPED EXAMPLE]")
-    @Disabled("ticketid-1234")  //  todo: add ticket from jira when integrated
+    @Disabled("ticketid-1234")
     public void skippedTest() {
         step("Open main page", () -> {
             mainPage.openPage();
@@ -51,8 +51,6 @@ public class OtherStatusesExampleTests extends TestBase {
     @Tag("regress")
     @Tag("broken")
     @DisplayName("Exception has been thrown [BROKEN EXAMPLE]")
-    @AllureId("12345")
-        //  todo: add ticket from jira when integrated, and maybe link to allure test ops
     void brokenTest() {
         step("Open main page", () -> {
             mainPage.openPage();
