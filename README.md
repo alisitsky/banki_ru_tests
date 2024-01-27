@@ -164,4 +164,30 @@ Allure TestOps is a TMS for test cases organizing. It helps to plan and manage b
 <p align="center">
 <img title="Allure TestOps Test cases" src="media/screenshots/testops2.JPG">
 </p>
+____
+
+<a id="jira"></a>
+## <img width="4%" style="vertical-align:bottom" title="Jira" src="media/icons/Jira.svg"> </a> Integration with <a target="_blank" href="https://www.atlassian.com/software/jira"> Jira </a>
+
+Integration of **Allure TestOps** and **Jira** is implemented. In the Jira task you can link test-cases or launches for the test-managmane purposes. 
+
+<p align="center">
+<img title="Jira Task" src="media/screenshots/jira.JPG">
+</p>
+
+____
+
+<a id="telegram"></a>
+## <img style="width: 50px;" title="Slack" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/slack/slack-original.svg"> Slack and <img width="4%" style="vertical-align:bottom" title="Telegram" src="media/icons/Telegram.svg"> Telegram notifications
+
+
+<p align="left">
+<img width="40%" title="Telegram Notifications" src="media/screenshots/tg.JPG">
+</p>
+
+<p align="left">
+<img width="40%" title="Telegram Notifications" src="media/screenshots/slack.JPG">
+</p>
+
+
 
