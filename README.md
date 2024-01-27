@@ -7,13 +7,13 @@
 
 - <a href="#tools">Tech stack and tools</a>
 - <a href="#cases">Automated Test Cases</a>
-- <a href="#runtests">Running Automated Tests</a>
+- <a href="#runtests">Local Tests Execution</a>
 - <a href="#jenkins">Jenkins Build</a>
 - <a href="#allureReport">Allure Report Example</a>
 - <a href="#allure">Allure TestOps Integration</a>
 - <a href="#jira">Jira Integration</a>
-- <a href="#telegram">Slack / Telegram Notifications</a>
-- <a href="#video">Test execution example</a>
+- <a href="#telegram">Slack / TG Notifications</a>
+- <a href="#video">Test execution video</a>
 
 ____
 <a id="tools"></a>
@@ -115,10 +115,16 @@ ____
 gradle clean test 
 ```
 
-<em>Run the tests having tag <b>"header_test"</b>:</em>
+<em>OR by tag <b>"header_test"</b>:</em>
 ```
 gradle clean header_tests
 ```
+
+<em>Generate and open html-report</em>
+```
+gradle allureServe
+```
+
 
 ____
 
