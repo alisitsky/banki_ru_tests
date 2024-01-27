@@ -165,6 +165,7 @@ Allure TestOps is a TMS for test cases organizing. It helps to plan and manage b
 <p align="center">
 <img width="70%" title="Allure TestOps Test cases" src="media/screenshots/testops2.JPG">
 </p>
+
 ____
 
 <a id="jira"></a>
@@ -183,12 +184,18 @@ ____
 
 
 <p align="left">
-<img width="40%" title="Telegram Notifications" src="media/screenshots/tg.JPG">
-</p>
-
-<p align="left">
-<img width="40%" title="Telegram Notifications" src="media/screenshots/slack.JPG">
+  <img width="40%" title="Telegram Notifications" src="media/screenshots/Slack.JPG">
+  <img width="40%" title="Telegram Notifications" src="media/screenshots/tg.JPG">
 </p>
 
 
 
+____
+<a id="video"></a>
+## <img width="4%" style="vertical-align:bottom" title="Selenoid" src="media/icons/Selenoid.svg"> </a> Video attachment example
+
+The video of a test execution is attach to every testcase:
+
+<p align="center">
+  <img title="Selenoid attachment" src="media/screenshots/test.gif">
+</p>
