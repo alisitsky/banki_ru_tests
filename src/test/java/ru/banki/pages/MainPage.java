@@ -25,18 +25,9 @@ public class MainPage {
             anotherCityButton = $$("button[type=button]").findBy(text("Другой город")),
             currentLocationPopup = $("div[class^=Area]"),
             geoSelectorButton = $("span[data-geo-selector]"),
-            calcTabsPannel = $("div[data-test=tabs-panel]"),
-            calcDepositsTab = $("div[data-test=tabs-panel-tab-deposits]"),
-            calcCreditsTabContent = $("div[data-test=credits-home-page-widget]"),
-            calcDepositsTabContent = $("div[data-test=deposits-home-page-widget]"),
             creditSumSlider = $("div[data-role=ranger]"),
-            creditCalculatedValue = $("div[data-test=widget-tab-credit-calc-payment]"),
             creditPeriodInput = $("div[data-test=credit-period] input"),
-            creditTimeSelectButton = $("div[class^=InputWithSelect").$$("div[class^=InputWithSelect").get(1),
-            calcMortgageInsuranceTab = $("div[data-test=tabs-panel-tab-mortgage-insurance]"),
-            calcBirthDateInput = $("div[data-test=mortgage-insurance-home-page-widget] input[data-testid=input-mask]"),
-            calcSubmitButton = $("button[data-test=main-ins-tab-hypothec-calculate]");
-
+            creditTimeSelectButton = $("div[class^=InputWithSelect").$$("div[class^=InputWithSelect").get(1);
     ElementsCollection
             headerSubmenuLinks = $$("div.main-menu__submenu-item a"),
             citiesList = $$("div ul li[data-selected=false]"),
@@ -98,41 +89,8 @@ public class MainPage {
         return this;
     }
 
-    public MainPage scrollToCalcWidget() {
-        randomUtils.scrollUntilElementLoads(calcTabsPannel);
-        return this;
-    }
-
-    public MainPage checkTabsVisibilityBeforeSwitch() {
-        calcCreditsTabContent.shouldBe(visible);
-        calcDepositsTabContent.shouldNotBe(visible);
-        return this;
-    }
-
-    public MainPage switchCalcTab() {
-        calcDepositsTab.click();
-        return this;
-    }
-
-    public MainPage checkTabsVisibilityAfterSwitch() {
-        calcDepositsTabContent.shouldBe(visible);
-        calcCreditsTabContent.shouldNotBe(visible);
-        return this;
-    }
-
-    public MainPage saveCalculatedValue() {
-        calcValueBeforeChange = $("div[data-test=widget-tab-credit-calc-payment]").text();
-        return this;
-    }
-
     public MainPage clickSliderCenter() {
         creditSumSlider.click();
-        return this;
-    }
-
-    public MainPage calcValueIsChanged() {
-        creditCalculatedValue.shouldNotHave(text(calcValueBeforeChange));
-
         return this;
     }
 
@@ -148,19 +106,4 @@ public class MainPage {
         return this;
     }
 
-    public MainPage switchToCalcTab() {
-        calcMortgageInsuranceTab.shouldBe(visible).click();
-        sleep(500);
-        return this;
-    }
-
-    public MainPage setBirthDate(String date) {
-        calcBirthDateInput.shouldBe(visible).setValue(date);
-        return this;
-    }
-
-    public MainPage clickSubmitCalcButton() {
-        calcSubmitButton.click();
-        return this;
-    }
 }

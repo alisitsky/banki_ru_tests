@@ -70,4 +70,5 @@ public class RandomUtils {
     public static void currentUrlIs(String url) {
         webdriver().shouldHave(url(url));
     }
+
 }

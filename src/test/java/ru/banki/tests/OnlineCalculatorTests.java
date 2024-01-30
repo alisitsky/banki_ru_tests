@@ -3,6 +3,7 @@ package ru.banki.tests;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import ru.banki.pages.MainPage;
+import ru.banki.pages.components.CalcComponent;
 
 import static io.qameta.allure.Allure.step;
 import static ru.banki.ultils.RandomUtils.getRandomBirthDateString;
@@ -11,6 +12,7 @@ import static ru.banki.ultils.RandomUtils.urlHasParam;
 @DisplayName("Online Calc Tests")
 public class OnlineCalculatorTests extends TestBase {
     MainPage mainPage = new MainPage();
+    CalcComponent calcComponent = new CalcComponent();
 
     @Test
     @DisplayName("Switch tab and check its visibility")
@@ -20,19 +22,19 @@ public class OnlineCalculatorTests extends TestBase {
         });
 
         step("Scroll to online-calc widget", () -> {
-            mainPage.scrollToCalcWidget();
+            calcComponent.scrollToCalcWidget();
         });
 
         step("First tab is visible, \nsecond is not", () -> {
-            mainPage.checkTabsVisibilityBeforeSwitch();
+            calcComponent.checkTabsVisibilityBeforeSwitch();
         });
 
         step("Click second tab", () -> {
-            mainPage.switchCalcTab();
+            calcComponent.switchCalcTab();
         });
 
         step("Second tab is visible, \nfirst is not", () -> {
-            mainPage.checkTabsVisibilityAfterSwitch();
+            calcComponent.checkTabsVisibilityAfterSwitch();
         });
     }
 
@@ -44,18 +46,18 @@ public class OnlineCalculatorTests extends TestBase {
         });
 
         step("Scroll to online-calc widget", () -> {
-            mainPage.scrollToCalcWidget();
+            calcComponent.scrollToCalcWidget();
         });
 
         step("Save calculated value", () -> {
-            mainPage.saveCalculatedValue();
+            calcComponent.saveCalculatedValue();
         });
 
         step("Click the slider", () ->
                 mainPage.clickSliderCenter());
 
         step("Check value is changed", () -> {
-            mainPage.calcValueIsChanged()
+            calcComponent.calcValueIsChanged()
                     .saveCalculatedValue();
         });
 
@@ -63,7 +65,7 @@ public class OnlineCalculatorTests extends TestBase {
                 mainPage.setRandomTimeValue());
 
         step("Check value is changed", () -> {
-            mainPage.calcValueIsChanged()
+            calcComponent.calcValueIsChanged()
                     .saveCalculatedValue();
         });
 
@@ -71,7 +73,7 @@ public class OnlineCalculatorTests extends TestBase {
                 mainPage.setRandomTimeMeasurement());
 
         step("Check value is changed", () ->
-                mainPage.calcValueIsChanged());
+                calcComponent.calcValueIsChanged());
     }
 
     @Test
@@ -85,19 +87,19 @@ public class OnlineCalculatorTests extends TestBase {
         });
 
         step("Scroll to online-calc widget", () -> {
-            mainPage.scrollToCalcWidget();
+            calcComponent.scrollToCalcWidget();
         });
 
         step("Click Mortgage Insurance tab", () -> {
-            mainPage.switchToCalcTab();
+            calcComponent.switchToCalcTab();
         });
 
         step("Set random birth date", () -> {
-            mainPage.setBirthDate(randomBirthDate);
+            calcComponent.setBirthDate(randomBirthDate);
         });
 
         step("Click Submit button", () ->
-                mainPage.clickSubmitCalcButton());
+                calcComponent.clickSubmitCalcButton());
 
         step("Check url has parameter", () ->
                 urlHasParam(urlParamBirthDate));
