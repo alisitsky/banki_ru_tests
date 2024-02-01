@@ -7,13 +7,13 @@
 
 - <a href="#tools">Tech stack and tools</a>
 - <a href="#cases">Automated Test Cases</a>
-- <a href="#runtests">Running Automated Tests</a>
+- <a href="#runtests">Local Tests Execution</a>
 - <a href="#jenkins">Jenkins Build</a>
 - <a href="#allureReport">Allure Report Example</a>
 - <a href="#allure">Allure TestOps Integration</a>
 - <a href="#jira">Jira Integration</a>
-- <a href="#telegram">Slack / Telegram Notifications</a>
-- <a href="#video">Test execution example</a>
+- <a href="#telegram">Slack / TG Notifications</a>
+- <a href="#video">Test execution video</a>
 
 ____
 <a id="tools"></a>
@@ -115,10 +115,16 @@ ____
 gradle clean test 
 ```
 
-<em>Run the tests having tag <b>"header_test"</b>:</em>
+<em>OR by tag <b>"header_test"</b>:</em>
 ```
 gradle clean header_tests
 ```
+
+<em>Generate and open html-report</em>
+```
+gradle allureServe
+```
+
 
 ____
 
@@ -171,7 +177,7 @@ ____
 <a id="jira"></a>
 ## <img width="4%" style="vertical-align:bottom" title="Jira" src="media/icons/Jira.svg"> </a> Integration with <a target="_blank" href="https://jira.autotests.cloud/browse/HOMEWORK-1084"> Jira </a>
 
-Integration of **Allure TestOps** and **Jira** is implemented. In the Jira task you can link test-cases or launches for the test-managmane purposes. 
+Integration of **Allure TestOps** and **Jira** is implemented. In the Jira task you can link test-cases or launches for the test-management purposes. 
 
 <p align="center">
 <img width="70%" title="Jira Task" src="media/screenshots/jira.JPG">
