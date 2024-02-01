@@ -10,8 +10,6 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.WebDriverConditions.url;
-import static com.codeborne.selenide.WebDriverConditions.urlContaining;
 
 public class RandomUtils {
     public void scrollUntilElementLoads(SelenideElement selenideElement) {

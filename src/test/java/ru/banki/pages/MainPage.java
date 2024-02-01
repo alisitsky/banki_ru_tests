@@ -9,7 +9,6 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Configuration.baseUrl;
 import static com.codeborne.selenide.Selenide.*;
 import static ru.banki.ultils.RandomUtils.clickUntilAppears;
-import static ru.banki.data.OnlineCalculatorTestsData.calcValueBeforeChange;
 import static ru.banki.ultils.RandomUtils.getRandomInt;
 
 public class MainPage {

@@ -1,7 +1,6 @@
 package ru.banki.pages.components;
 
 import com.codeborne.selenide.SelenideElement;
-import ru.banki.pages.MainPage;
 import ru.banki.ultils.RandomUtils;
 
 import static com.codeborne.selenide.Condition.text;
