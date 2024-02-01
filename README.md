@@ -169,7 +169,7 @@ Allure TestOps is a TMS for test cases organizing. It helps to plan and manage b
 ____
 
 <a id="jira"></a>
-## <img width="4%" style="vertical-align:bottom" title="Jira" src="media/icons/Jira.svg"> </a> Integration with <a target="_blank" href="https://www.atlassian.com/software/jira"> Jira </a>
+## <img width="4%" style="vertical-align:bottom" title="Jira" src="media/icons/Jira.svg"> </a> Integration with <a target="_blank" href="https://jira.autotests.cloud/browse/HOMEWORK-1084"> Jira </a>
 
 Integration of **Allure TestOps** and **Jira** is implemented. In the Jira task you can link test-cases or launches for the test-managmane purposes. 
 

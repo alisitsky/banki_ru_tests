@@ -9,9 +9,7 @@ import ru.banki.pages.SearchPage;
 
 import static io.qameta.allure.Allure.step;
 import static ru.banki.data.HeaderTestsData.*;
-import static ru.banki.ultils.AttachUtils.attachScreenshotAs;
-import static ru.banki.ultils.RandomUtils.currentUrlEquals;
-import static ru.banki.ultils.RandomUtils.currentUrlIs;
+import static ru.banki.ultils.UrlUtils.currentUrlIs;
 
 @DisplayName("Header Tests")
 public class HeaderTests extends TestBase {
@@ -35,7 +33,7 @@ public class HeaderTests extends TestBase {
 
         step("Click in \"" + headerLinkSpecials + "\" link and check URL", () -> {
             mainPage.clickHeaderSubmenuLink(headerLinkSpecials);
-            currentUrlEquals(specialsPageUrl);
+            currentUrlIs(specialsPageUrl);
         });
     }
 

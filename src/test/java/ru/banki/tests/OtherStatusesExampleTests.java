@@ -1,6 +1,5 @@
 package ru.banki.tests;
 
-import io.qameta.allure.AllureId;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -9,8 +8,7 @@ import ru.banki.pages.MainPage;
 
 import static io.qameta.allure.Allure.step;
 import static ru.banki.data.HeaderTestsData.*;
-import static ru.banki.ultils.AttachUtils.attachScreenshotAs;
-import static ru.banki.ultils.RandomUtils.currentUrlEquals;
+import static ru.banki.ultils.UrlUtils.currentUrlIs;
 
 @DisplayName("Examples of other statuses")
 public class OtherStatusesExampleTests extends TestBase {
@@ -32,7 +30,7 @@ public class OtherStatusesExampleTests extends TestBase {
 
         step("Click in \"" + headerLinkSpecials + "\" link and check URL", () -> {
             mainPage.clickHeaderSubmenuLink(headerLinkSpecials);
-            currentUrlEquals(specialsPageWrongUrl);
+            currentUrlIs(specialsPageWrongUrl);
         });
     }
 

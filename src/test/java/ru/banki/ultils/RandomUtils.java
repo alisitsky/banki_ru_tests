@@ -50,10 +50,6 @@ public class RandomUtils {
         return dateFormatter.format(randomDate);
     }
 
-    public static void currentUrlEquals(String url) {
-        webdriver().shouldHave(url(url));
-    }
-
     public static void clickUntilAppears(SelenideElement elementToClick, SelenideElement elementToCheck, int secRepeat) {
         int i = secRepeat * 10;
         while (!elementToCheck.is(visible) && i > 0) {
@@ -62,13 +58,4 @@ public class RandomUtils {
             i--;
         }
     }
-
-    public static void urlHasParam(String param) {
-        webdriver().shouldHave(urlContaining(param));
-    }
-
-    public static void currentUrlIs(String url) {
-        webdriver().shouldHave(url(url));
-    }
-
 }

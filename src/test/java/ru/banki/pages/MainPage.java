@@ -40,7 +40,7 @@ public class MainPage {
     }
 
     public MainPage hoverHeaderTab(String tabName) {
-        $$("ul.main-menu__sections li").findBy(text(tabName)).hover();
+        $$("ul.main-menu__sections li").findBy(text(tabName)).shouldBe(visible).hover();
         return this;
     }
 

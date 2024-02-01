@@ -7,7 +7,7 @@ import ru.banki.pages.components.CalcComponent;
 
 import static io.qameta.allure.Allure.step;
 import static ru.banki.ultils.RandomUtils.getRandomBirthDateString;
-import static ru.banki.ultils.RandomUtils.urlHasParam;
+import static ru.banki.ultils.UrlUtils.urlHasParam;
 
 @DisplayName("Online Calc Tests")
 public class OnlineCalculatorTests extends TestBase {
