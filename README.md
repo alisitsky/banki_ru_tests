@@ -111,6 +111,7 @@ ____
 ## Local execution
 
 <em> Run <b>all</b> the tests: </em>
+
 ```
 gradle clean test 
 ```
@@ -119,6 +120,14 @@ gradle clean test
 ```
 gradle clean header_tests
 ```
+
+<em>Customize browser</b>:</em>
+```
+gradle clean header_tests -Dbrowser=firefox -DbrowserSize=2550x1440
+```
+
+
+
 
 <em>Generate and open html-report</em>
 ```
