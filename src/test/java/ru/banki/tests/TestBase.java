@@ -5,7 +5,6 @@ import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import ru.banki.config.ConfigReader;
 import ru.banki.config.ProjectConfigurator;
 import ru.banki.config.web.WebConfig;
@@ -18,13 +17,9 @@ public class TestBase {
 
     @BeforeAll
     static void beforeAll() {
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
         ProjectConfigurator projectConfigurator = new ProjectConfigurator(webConfig);
         projectConfigurator.setWebConfig();
-    }
-
-    @BeforeEach
-    void beforeEach() {
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
     }
 
     @AfterEach
